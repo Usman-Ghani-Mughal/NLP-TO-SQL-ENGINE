@@ -1,4 +1,6 @@
-from ..BaseConfig import BaseConfig
+from ..BaseConfig.BaseConfig import BaseConfig
+from langchain_openai import AzureChatOpenAI
+
 
 class AzureOpenAIConfig(BaseConfig):
     def __init__(self, openai_api_key, azure_endpoint, deployment_name, api_version, temperature=0.7):
@@ -26,3 +28,17 @@ class AzureOpenAIConfig(BaseConfig):
             raise ValueError("Temperature is required")
         
         print("Azure OpenAI configuration is valid.")
+    
+    def get_ll_model(self):
+        """Get the Azure OpenAI model """
+        try:
+            llm_model = AzureChatOpenAI(
+                openai_api_key=self.openai_api_key,
+                azure_endpoint=self.azure_endpoint,
+                deployment_name=self.deployment_name,
+                api_version=self.api_version,
+                temperature=self.temperature)
+            return llm_model
+        except Exception as e:
+            print(f"\033Got error file getting llm model: {e} \033[0m")
+            return None

@@ -1,2 +1,6 @@
 langchain
 langchain-community
+langchain-openai
+databricks-sdk
+databricks-sql-connector
+streamlit

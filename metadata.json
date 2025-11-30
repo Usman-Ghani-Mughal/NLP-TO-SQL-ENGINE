@@ -1,0 +1,365 @@
+{
+    "catalog": "ecom",
+    "schema": "brazilian_ecom_olist",
+    "tables": [
+        {
+            "table_name": "customers_bronze",
+            "table_description": "The table contains customer information, including identifiers and location details. It can be used for analyzing customer demographics, tracking customer activity over time, and understanding geographic distribution. Key data points include customer IDs, city, state, and the last time their data was processed.",
+            "columns": [
+                {
+                    "column_name": "customer_id",
+                    "data_type": "STRING",
+                    "column_description": "key to the orders dataset. Each order has a unique customer_id."
+                },
+                {
+                    "column_name": "customer_unique_id",
+                    "data_type": "STRING",
+                    "column_description": "unique identifier of a customer."
+                },
+                {
+                    "column_name": "customer_zip_code_prefix",
+                    "data_type": "STRING",
+                    "column_description": "first five digits of customer zip code"
+                },
+                {
+                    "column_name": "customer_city",
+                    "data_type": "STRING",
+                    "column_description": "customer city name"
+                },
+                {
+                    "column_name": "customer_state",
+                    "data_type": "STRING",
+                    "column_description": "customer state"
+                },
+                {
+                    "column_name": "last_processed_timestamp",
+                    "data_type": "TIMESTAMP",
+                    "column_description": "timestamp of the most recent data update for the customer"
+                }
+            ]
+        },
+        {
+            "table_name": "geolocation_bronze",
+            "table_description": "The table contains geolocation data associated with various locations. It includes information such as zip code prefixes, latitude, longitude, city, and state. This data can be used for mapping, location-based analysis, and understanding regional trends.",
+            "columns": [
+                {
+                    "column_name": "geolocation_zip_code_prefix",
+                    "data_type": "STRING",
+                    "column_description": "Zip code prefix indicating the geographical area."
+                },
+                {
+                    "column_name": "geolocation_lat",
+                    "data_type": "STRING",
+                    "column_description": "Latitude coordinate for the geolocation."
+                },
+                {
+                    "column_name": "geolocation_lng",
+                    "data_type": "STRING",
+                    "column_description": "Longitude coordinate for the geolocation."
+                },
+                {
+                    "column_name": "geolocation_city",
+                    "data_type": "STRING",
+                    "column_description": "City corresponding to the geolocation."
+                },
+                {
+                    "column_name": "geolocation_state",
+                    "data_type": "STRING",
+                    "column_description": "State corresponding to the geolocation."
+                },
+                {
+                    "column_name": "last_processed_timestamp",
+                    "data_type": "TIMESTAMP",
+                    "column_description": "Timestamp indicating the most recent processing date and time for the geolocation data."
+                }
+            ]
+        },
+        {
+            "table_name": "orderitems_bronze",
+            "table_description": "The table contains details about orders and their associated items. It includes information such as order IDs, product IDs, seller IDs, pricing, and shipping limits. This data can be used for analyzing order fulfillment, tracking shipping performance, and understanding sales trends.",
+            "columns": [
+                {
+                    "column_name": "order_id",
+                    "data_type": "STRING",
+                    "column_description": "Unique identifier for each order"
+                },
+                {
+                    "column_name": "order_item_id",
+                    "data_type": "STRING",
+                    "column_description": "Corresponding ID for individual items within an order"
+                },
+                {
+                    "column_name": "product_id",
+                    "data_type": "STRING",
+                    "column_description": "Identifier for each product in an order"
+                },
+                {
+                    "column_name": "seller_id",
+                    "data_type": "STRING",
+                    "column_description": "Unique identifier for the seller associated with each order item"
+                },
+                {
+                    "column_name": "shipping_limit_date",
+                    "data_type": "STRING",
+                    "column_description": "Deadline by which the seller must ship the item"
+                },
+                {
+                    "column_name": "price",
+                    "data_type": "STRING",
+                    "column_description": "Cost of the individual item within an order"
+                },
+                {
+                    "column_name": "freight_value",
+                    "data_type": "STRING",
+                    "column_description": "item freight value item (if an order has more than one item the freight value is splitted between items)"
+                },
+                {
+                    "column_name": "last_processed_timestamp",
+                    "data_type": "TIMESTAMP",
+                    "column_description": "Timestamp indicating the last time the record was processed"
+                }
+            ]
+        },
+        {
+            "table_name": "productcategory_bronze",
+            "table_description": "The table contains information about product categories, including their names in both the original language and English. It also tracks the last time the data was processed. This data can be used for categorizing products, analyzing product offerings, and ensuring that the product information is up to date.",
+            "columns": [
+                {
+                    "column_name": "product_category_name",
+                    "data_type": "STRING",
+                    "column_description": "category name in Portuguese"
+                },
+                {
+                    "column_name": "product_category_name_english",
+                    "data_type": "STRING",
+                    "column_description": "category name in English"
+                },
+                {
+                    "column_name": "last_processed_timestamp",
+                    "data_type": "TIMESTAMP",
+                    "column_description": "timestamp of the latest data processing"
+                }
+            ]
+        },
+        {
+            "table_name": "orderreviews_bronze",
+            "table_description": "The table contains customer reviews related to orders. It includes details such as review scores, titles, and messages, along with timestamps for when the reviews were created and answered. This data can be used to analyze customer satisfaction, identify common feedback themes, and assess the effectiveness of responses to reviews.",
+            "columns": [
+                {
+                    "column_name": "review_id",
+                    "data_type": "STRING",
+                    "column_description": "Unique identifier for each customer review."
+                },
+                {
+                    "column_name": "order_id",
+                    "data_type": "STRING",
+                    "column_description": "Identifier for the purchase linked to the customer review."
+                },
+                {
+                    "column_name": "review_score",
+                    "data_type": "STRING",
+                    "column_description": "Note ranging from 1 to 5 given by the customer on a satisfaction survey."
+                },
+                {
+                    "column_name": "review_comment_title",
+                    "data_type": "STRING",
+                    "column_description": "Comment title from the review left by the customer, in Portuguese."
+                },
+                {
+                    "column_name": "review_comment_message",
+                    "data_type": "STRING",
+                    "column_description": "Comment message from the review left by the customer, in Portuguese."
+                },
+                {
+                    "column_name": "review_creation_date",
+                    "data_type": "STRING",
+                    "column_description": "Shows the date in which the satisfaction survey was sent to the customer."
+                },
+                {
+                    "column_name": "review_answer_timestamp",
+                    "data_type": "STRING",
+                    "column_description": "Timestamp of when the review was answered by the support team."
+                },
+                {
+                    "column_name": "last_processed_timestamp",
+                    "data_type": "TIMESTAMP",
+                    "column_description": "Timestamp of the most recent processing event for this record."
+                }
+            ]
+        },
+        {
+            "table_name": "sellers_bronze",
+            "table_description": "The table contains information about sellers, including their location details such as city, state, and zip code. It also includes a timestamp indicating the last time the seller's data was processed. This data can be used for analyzing seller distribution, tracking seller activity over time, and understanding regional sales performance.",
+            "columns": [
+                {
+                    "column_name": "seller_id",
+                    "data_type": "STRING",
+                    "column_description": null
+                },
+                {
+                    "column_name": "seller_zip_code_prefix",
+                    "data_type": "STRING",
+                    "column_description": null
+                },
+                {
+                    "column_name": "seller_city",
+                    "data_type": "STRING",
+                    "column_description": null
+                },
+                {
+                    "column_name": "seller_state",
+                    "data_type": "STRING",
+                    "column_description": null
+                },
+                {
+                    "column_name": "last_processed_timestamp",
+                    "data_type": "TIMESTAMP",
+                    "column_description": null
+                }
+            ]
+        },
+        {
+            "table_name": "products_bronze",
+            "table_description": "The table contains detailed information about products, including their categories, dimensions, and other attributes. Use cases include analyzing product characteristics, assessing inventory, and optimizing product listings. The data can help in understanding product performance and making decisions related to product management.",
+            "columns": [
+                {
+                    "column_name": "product_id",
+                    "data_type": "STRING",
+                    "column_description": "Unique identifier for each product"
+                },
+                {
+                    "column_name": "product_category_name",
+                    "data_type": "STRING",
+                    "column_description": "root category of product, in Portuguese."
+                },
+                {
+                    "column_name": "product_name_lenght",
+                    "data_type": "STRING",
+                    "column_description": "number of characters extracted from the product name."
+                },
+                {
+                    "column_name": "product_description_lenght",
+                    "data_type": "STRING",
+                    "column_description": "number of characters extracted from the product description."
+                },
+                {
+                    "column_name": "product_photos_qty",
+                    "data_type": "STRING",
+                    "column_description": "number of product published photos"
+                },
+                {
+                    "column_name": "product_weight_g",
+                    "data_type": "STRING",
+                    "column_description": "product weight measured in grams."
+                },
+                {
+                    "column_name": "product_length_cm",
+                    "data_type": "STRING",
+                    "column_description": "product length measured in centimeters."
+                },
+                {
+                    "column_name": "product_height_cm",
+                    "data_type": "STRING",
+                    "column_description": "product height measured in centimeters."
+                },
+                {
+                    "column_name": "product_width_cm",
+                    "data_type": "STRING",
+                    "column_description": "product width measured in centimeters."
+                },
+                {
+                    "column_name": "last_processed_timestamp",
+                    "data_type": "TIMESTAMP",
+                    "column_description": "timestamp indicating the most recent update or processing time of the product record."
+                }
+            ]
+        },
+        {
+            "table_name": "orderpayments_bronze",
+            "table_description": "The table contains data related to payment transactions for orders. It includes details such as the payment type, the number of installments, and the total payment value. This information can be used to analyze payment trends, assess customer preferences for payment methods, and track the timing of payment processing.",
+            "columns": [
+                {
+                    "column_name": "order_id",
+                    "data_type": "STRING",
+                    "column_description": "Unique identifier for each order transaction."
+                },
+                {
+                    "column_name": "payment_sequential",
+                    "data_type": "STRING",
+                    "column_description": "a customer may pay an order with more than one payment method. If he does so, a sequence will be created to accommodate all payments."
+                },
+                {
+                    "column_name": "payment_type",
+                    "data_type": "STRING",
+                    "column_description": "Specifies the method of payment used in the transaction."
+                },
+                {
+                    "column_name": "payment_installments",
+                    "data_type": "STRING",
+                    "column_description": "Number of payment installments for the transaction."
+                },
+                {
+                    "column_name": "payment_value",
+                    "data_type": "STRING",
+                    "column_description": "Total monetary amount paid in the transaction."
+                },
+                {
+                    "column_name": "last_processed_timestamp",
+                    "data_type": "TIMESTAMP",
+                    "column_description": "Timestamp indicating the last time the payment transaction was processed."
+                }
+            ]
+        },
+        {
+            "table_name": "orders_bronze",
+            "table_description": "The table contains data related to customer orders. It includes information such as order IDs, customer IDs, order statuses, and timestamps for various stages of the order process, including purchase, approval, and delivery. This data can be used to track order fulfillment, analyze customer purchasing patterns, and assess delivery performance.",
+            "columns": [
+                {
+                    "column_name": "order_id",
+                    "data_type": "STRING",
+                    "column_description": "Unique identifier for each customer order"
+                },
+                {
+                    "column_name": "customer_id",
+                    "data_type": "STRING",
+                    "column_description": "Identifier for each unique customer"
+                },
+                {
+                    "column_name": "order_status",
+                    "data_type": "STRING",
+                    "column_description": "Current state of the customer order (e.g., pending, approved, delivered)"
+                },
+                {
+                    "column_name": "order_purchase_timestamp",
+                    "data_type": "STRING",
+                    "column_description": "Timestamp when the customer placed the order"
+                },
+                {
+                    "column_name": "order_approved_at",
+                    "data_type": "STRING",
+                    "column_description": "Timestamp when the order was approved"
+                },
+                {
+                    "column_name": "order_delivered_carrier_date",
+                    "data_type": "STRING",
+                    "column_description": "Timestamp when the order was handed over to the delivery carrier"
+                },
+                {
+                    "column_name": "order_delivered_customer_date",
+                    "data_type": "STRING",
+                    "column_description": "Timestamp when the order was delivered to the customer"
+                },
+                {
+                    "column_name": "order_estimated_delivery_date",
+                    "data_type": "STRING",
+                    "column_description": "The projected date by which the order is expected to be delivered to the customer"
+                },
+                {
+                    "column_name": "last_processed_timestamp",
+                    "data_type": "TIMESTAMP",
+                    "column_description": "Timestamp of the most recent processing of the order data"
+                }
+            ]
+        }
+    ]
+}

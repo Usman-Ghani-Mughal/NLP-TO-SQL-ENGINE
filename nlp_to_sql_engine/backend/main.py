@@ -1,8 +1,8 @@
 import os
 import json
 from dotenv import load_dotenv
-from Configs import AzureOpenAIConfig
-from Configs import DatabricksConfig
+from .configs import AzureOpenAIConfig
+from .configs import DatabricksConfig
 
 load_dotenv()
 

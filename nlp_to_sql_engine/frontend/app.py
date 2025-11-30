@@ -1,7 +1,7 @@
 import streamlit as st
 import styles.custom_css as custom_css
 import components.sidebar as sidebar
-from ..Backend import start_agent
+from nlp_to_sql_engine.backend.main import start_agent
 
 # Page configuration
 st.set_page_config(

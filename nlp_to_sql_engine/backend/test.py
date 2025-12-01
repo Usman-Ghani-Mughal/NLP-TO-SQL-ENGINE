@@ -6,17 +6,17 @@ from Configs import DatabricksConfig
 
 load_dotenv()
 
-## Create an instance of AzureOpenAIConfig with environment variables
-# test = AzureOpenAIConfig(
-#     openai_api_key = os.getenv("gpt_4_o_mini_AZURE_OPENAI_KEY"),
-#     azure_endpoint = os.getenv("gpt_4_o_mini_AZURE_OPENAI_ENDPOINT"),
-#     deployment_name = os.getenv("gpt_4_o_mini_AZURE_OPENAI_DEPLOYMENT_NAME"),
-#     api_version = os.getenv("gpt_4_o_mini_AZURE_OPENAI_API_VERSION"),
-#     temperature = 0.7
-# )
-# llm_model = test.get_ll_model()
-# print(llm_model)
-## ------------------------------------------------------------------------------
+# Create an instance of AzureOpenAIConfig with environment variables
+test = AzureOpenAIConfig(
+    openai_api_key = os.getenv("gpt_4_o_mini_AZURE_OPENAI_KEY"),
+    azure_endpoint = os.getenv("gpt_4_o_mini_AZURE_OPENAI_ENDPOINT"),
+    deployment_name = os.getenv("gpt_4_o_mini_AZURE_OPENAI_DEPLOYMENT_NAME"),
+    api_version = os.getenv("gpt_4_o_mini_AZURE_OPENAI_API_VERSION"),
+    temperature = 0.7
+)
+llm_model = test.get_ll_model()
+print(llm_model)
+# ------------------------------------------------------------------------------
 
 dbx = DatabricksConfig(
     host=os.getenv("DATABRICKS_HOST"), 

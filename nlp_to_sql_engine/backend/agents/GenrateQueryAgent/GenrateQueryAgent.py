@@ -24,21 +24,6 @@ class GenrateQueryAgent:
     
     def run(self):
         try:
-            # --------------OLD CODE----------------
-            # sql_prompt = ChatPromptTemplate.from_messages([
-            #     ("system", nlp_to_sql_prompt_system),
-            #     ("human", nlp_to_sql_prompt_human)
-            # ])
-            
-            # sql_chain = LLMChain(llm=self.llm_model, prompt=sql_prompt)
-            # sql_query = sql_chain.run({
-            #     "catalog": catalog,
-            #     "schema": schema,
-            #     "metadata": metadata_str,
-            #     "question": question
-            # })
-            # ---------------------------------
-            
             sql_prompt = ChatPromptTemplate.from_messages([
                 ("system", nlp_to_sql_prompt_system),
                 ("human", nlp_to_sql_prompt_human),

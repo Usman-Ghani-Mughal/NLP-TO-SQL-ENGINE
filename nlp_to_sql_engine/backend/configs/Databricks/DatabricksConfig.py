@@ -10,6 +10,7 @@ class DatabricksConfig(BaseConfig):
     """
 
     def __init__(self, host, token, sql_http_path, catalog, schema) -> None:
+        print("Initializing DatabricksConfig...") 
         self.host = host
         self.token = token
         self.sql_http_path = sql_http_path
@@ -23,6 +24,7 @@ class DatabricksConfig(BaseConfig):
         self._sql_connection = None
         
         super().__init__()
+        print("DatabricksConfig initialized.")
 
     # ---------- internal helpers ----------
 

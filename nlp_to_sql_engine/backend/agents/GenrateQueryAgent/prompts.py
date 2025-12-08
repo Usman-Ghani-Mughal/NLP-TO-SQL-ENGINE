@@ -26,6 +26,9 @@ Important guidelines:
 - Make assumptions about columns not present in the metadata
 - Use columns or tables that don't exist in the provided schema
 - Generate queries that could modify data (no INSERT, UPDATE, DELETE, DROP)
+- **DO NOT wrap the query in markdown code blocks like ```sql or ```**
+- **DO NOT include triple backticks (```) anywhere in your response**
+- **DO NOT add any text before or after the SQL query**
 
 Database Information:
 - Catalog: {catalog}
@@ -37,6 +40,8 @@ Output format:
 - Use triple quotes for multi-line queries
 - Do not include variable assignments or spark.sql() wrapper
 - Query should be ready to use with spark.sql()
+- Do NOT include ```sql or ``` code fences
+- Start directly with SELECT, WITH, or other SQL keywords
 
 Example output format:
 SELECT column1, column2, COUNT(*) as total

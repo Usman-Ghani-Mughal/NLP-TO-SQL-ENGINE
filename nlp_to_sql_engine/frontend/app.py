@@ -43,40 +43,7 @@ for message in st.session_state.messages:
                     #st.markdown(f"**Results:** {message['content']['row_count']} rows returned")
                     df = message["content"]["response"]
                     # Show metrics
-                    col1, col2 = st.columns(2)
-                    with col1:
-                        st.metric("📊 Rows", f"{len(df):,}")
-                    with col2:
-                        st.metric("📋 Columns", len(df.columns))
-                    st.markdown("---")
-                    
-                    # Format and display DataFrame
-                    formatted_df = format_df.format_dataframe(df)
-                    
-                    if formatted_df is not None:
-                        st.dataframe(
-                            formatted_df,
-                            use_container_width=True,
-                            hide_index=True,
-                            height=min(400, len(formatted_df) * 35 + 38)  # Dynamic height
-                        )
-                    else:
-                        st.dataframe(
-                            df,
-                            use_container_width=True,
-                            hide_index=True,
-                            height=min(400, len(df) * 35 + 38)
-                        )
-                        
-                    # Download button
-                    csv = df.to_csv(index=False)
-                    st.download_button(
-                        label="📥 Download Results as CSV",
-                        data=csv,
-                        file_name="query_results.csv",
-                        mime="text/csv",
-                        key=f"download_{id(message)}"
-                    )
+                    format_df.display_dataframe(df)
                 else:
                     st.info("✓ Query executed successfully but returned no results.")
             else:

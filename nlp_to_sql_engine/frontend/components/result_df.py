@@ -2,6 +2,7 @@ import pandas as pd
 import streamlit as st
 import plotly.express as px
 import plotly.graph_objects as go
+import time
 
 def generate_ecommerce_visualizations(df):
     """
@@ -365,7 +366,7 @@ def display_dataframe(df):
         data=csv,
         file_name="query_results.csv",
         mime="text/csv",
-        key=f"download_{len(st.session_state.messages)}"
+        key=f"download_{int(time.time() * 1000)}"
     )
     
     # Generate smart visualizations

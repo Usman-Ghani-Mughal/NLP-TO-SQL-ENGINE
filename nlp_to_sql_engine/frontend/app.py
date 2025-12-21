@@ -14,6 +14,9 @@ st.set_page_config(
 # Custom CSS for Claude-like styling
 st.markdown(custom_css.main_css, unsafe_allow_html=True)
 
+# Add sidebar
+sidebar.add_sidebar()
+
 # Display title
 st.title("💬 Conversational BI Agent")
 
@@ -122,5 +125,3 @@ if prompt := st.chat_input("Ask me about your data..."):
 
     
 
-# Add sidebar
-sidebar.add_sidebar()

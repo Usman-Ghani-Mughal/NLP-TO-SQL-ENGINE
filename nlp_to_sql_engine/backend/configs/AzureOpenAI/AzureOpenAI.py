@@ -14,7 +14,7 @@ class AzureOpenAIConfig(BaseConfig):
     
     def validate(self) -> None:
         """Validate Azure OpenAI configuration."""
-        print("Validating Azure OpenAI configuration...")
+        # print("Validating Azure OpenAI configuration...")
         
         if not self.openai_api_key:
             raise ValueError("API key is required")
@@ -27,7 +27,7 @@ class AzureOpenAIConfig(BaseConfig):
         if not self.temperature:
             raise ValueError("Temperature is required")
         
-        print("Azure OpenAI configuration is valid.")
+        # print("Azure OpenAI configuration is valid.")
     
     def get_ll_model(self):
         """Get the Azure OpenAI model """

@@ -10,7 +10,7 @@ class DatabricksConfig(BaseConfig):
     """
 
     def __init__(self, host, token, sql_http_path, catalog, schema) -> None:
-        print("Initializing DatabricksConfig...") 
+        # print("Initializing DatabricksConfig...") 
         self.host = host
         self.token = token
         self.sql_http_path = sql_http_path
@@ -24,12 +24,12 @@ class DatabricksConfig(BaseConfig):
         self._sql_connection = None
         
         super().__init__()
-        print("DatabricksConfig initialized.")
+        # print("DatabricksConfig initialized.")
 
     # ---------- internal helpers ----------
 
     def validate(self) -> None:
-        print("Validating Databricks configuration...")
+        # print("Validating Databricks configuration...")
         missing = []
         if not self.host:
             missing.append("DATABRICKS_HOST")
@@ -42,7 +42,7 @@ class DatabricksConfig(BaseConfig):
             raise RuntimeError(
                 f"Missing required Databricks env vars in .env: {', '.join(missing)}"
             )
-        print("Databricks configuration is valid.")
+        # print("Databricks configuration is valid.")
 
     # ---------- public: workspace client ----------
 

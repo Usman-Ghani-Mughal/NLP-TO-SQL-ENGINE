@@ -16,6 +16,7 @@ class RunQueryAgent:
 
     def run(self):
         try:
+            print("RunQueryAgent started...")
             workspace_client = self.dbx_config.get_workspace_client()
             cursor = self.dbx_config.get_sql_cursor()
             cursor.execute(self.query)
@@ -26,4 +27,5 @@ class RunQueryAgent:
             df = pd.DataFrame(rows, columns=columns)
             return {"query": self.query, "response":df, "success": True}
         except Exception as e:
-            raise RuntimeError(f"Failed to execute query: {e}")
+            raise
+            #raise RuntimeError(f"Failed to execute query: {e}")

@@ -1,14 +1,11 @@
-# from langchain.chains import LLMChain
-# from langchain.prompts import ChatPromptTemplate
-
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
     
 from nlp_to_sql_engine.metadata.MetaDataManager import MetaDataManager
 from nlp_to_sql_engine.backend.configs.AzureOpenAI.AzureOpenAI import AzureOpenAIConfig
-from nlp_to_sql_engine.backend.agents.GenrateQueryAgent.prompts import nlp_to_sql_prompt_system, nlp_to_sql_prompt_human
+from nlp_to_sql_engine.backend.agents.EnhancedQuestionAgent.prompts import enhance_prompt_system, enhance_prompt_human
 
-class GenrateQueryAgent:
+class EnhancedQuestionAgent:
     def __init__(self, question, openai_api_key, azure_endpoint, deployment_name, api_version, temperature=0.7):
         self.question = question
         self.llm_config = AzureOpenAIConfig(
@@ -24,21 +21,21 @@ class GenrateQueryAgent:
     
     def run(self):
         try:
-            print("GenrateQueryAgent started...")
-            sql_prompt = ChatPromptTemplate.from_messages([
-                ("system", nlp_to_sql_prompt_system),
-                ("human", nlp_to_sql_prompt_human),
+            print("EnhancedQuestionAgent started...")
+            enhance_prompt = ChatPromptTemplate.from_messages([
+                ("system", enhance_prompt_system),
+                ("human", enhance_prompt_human),
                 ])
-            sql_chain = sql_prompt | self.llm_model | StrOutputParser()
+            enhance_chain = enhance_prompt | self.llm_model | StrOutputParser()
             inputs = {
                 "catalog": "ecom",
                 "schema": "brazilian_ecom_olist",
                 "metadata": self.unity_catalog_metadata,
-                "question": self.question,
+                "original_prompt": self.question,
                 }
-            sql_query = sql_chain.invoke(inputs)
-            return sql_query
+            enhance_question = enhance_chain.invoke(inputs)
+            return enhance_question
         except Exception as e:
             raise
-            #raise(f"Error in GenrateQueryAgent run method: {e}")
+            #raise(f"Error in EnhancedQuestionAgent run method: {e}")
         

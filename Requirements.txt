@@ -6,3 +6,4 @@ databricks-sql-connector
 streamlit
 pandas
 plotly
+matplotlib

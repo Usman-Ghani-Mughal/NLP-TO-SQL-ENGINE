@@ -46,7 +46,7 @@ for message in st.session_state.messages:
                     #st.markdown(f"**Results:** {message['content']['row_count']} rows returned")
                     df = message["content"]["response"]
                     # Show metrics
-                    format_df.display_dataframe(df)
+                    format_df.display_dataframe(df, message["content"]["visualization_code"])
                 else:
                     st.info("✓ Query executed successfully but returned no results.")
             else:
@@ -87,14 +87,7 @@ if prompt := st.chat_input("Ask me about your data..."):
                     # st.markdown(f"**Results:** {backend_response['row_count']} rows returned")
                     df = backend_response["response"]
                     
-                    format_df.display_dataframe(df)
-                    
-                    # Display as interactive dataframe
-                    # st.dataframe(
-                    #     backend_response["response"],
-                    #     use_container_width=True,
-                    #     hide_index=True
-                    # )
+                    format_df.display_dataframe(df, backend_response["visualization_code"])
                     
                 else:
                     st.info("✓ Query executed successfully but returned no results.")

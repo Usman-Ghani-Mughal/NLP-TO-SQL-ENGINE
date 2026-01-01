@@ -26,4 +26,6 @@ class RunQueryAgent:
             df = pd.DataFrame(rows, columns=columns)
             return {"query": self.query, "response":df, "success": True}
         except Exception as e:
-            raise RuntimeError(f"Failed to execute query: {e}")
+            raise
+            #raise(f"Error in RunQueryAgent run method: {e}")
+            # raise RuntimeError(f"Failed to execute query: {e}")

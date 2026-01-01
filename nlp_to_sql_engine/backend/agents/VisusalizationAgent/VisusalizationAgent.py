@@ -45,5 +45,6 @@ class VisusalizationAgent:
             vis_code = vis_chain.invoke(inputs)
             return vis_code
         except Exception as e:
-            raise(f"Error in VisusalizationAgent run method: {e}")
+            raise
+            #raise(f"Error in VisusalizationAgent run method: {e}")
         
